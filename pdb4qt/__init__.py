@@ -9,7 +9,10 @@ def set_trace(frame=None):
     Taken from:
     http://stackoverflow.com/questions/1736015/debugging-a-pyqt4-app
     '''
-    from PyQt4.QtCore import pyqtRemoveInputHook
+    try:
+        from PyQt4.QtCore import pyqtRemoveInputHook
+    except ImportError:
+        from PyQt5.QtCore import pyqtRemoveInputHook
     try:
         from ipdb import set_trace
     except ImportError:
